@@ -9,34 +9,38 @@
 #define Mod 1000000007
 #define limit 1000008
 using namespace std;
-///seive
-bool vis[limit];
-vector<int>prime;
-void seive()
+
+void solve(int t)
 {
-    vis[0]=vis[1]=1;
-    for(int i=4; i<limit; i+=2) vis[i] = 1;
-    for(int i=3; i*i<limit; i+=2)
+    int i,j,n,m,k;
+    scanf("%d",&n);
+    int d[n+5];
+    for(i=0; i<n; i++)
     {
-        if(vis[i]) continue;
-        for(int j=i*i; j<limit; j+=2*i)
+        scanf("%d",&d[i]);
+    }
+    int ct=0;
+    for(i=0; i<n; i++)
+    {
+        for(j=i+1; j<n; j++)
         {
-            vis[j] = 1;
+            if((d[i]+d[j])%5==0)
+                ct++;
         }
     }
-    prime.pb(2);
-    for(int j=3; j<limit; j+=2)
-        if(vis[j]==0)
-            prime.pb(j);
+    printf("Case %d: %d\n",t,ct);
+    return ;
 }
-
 int  main()
 {
 //    Fast
 //    Freed
 //    Fout
-    seive();
-    for(int i=0; i<prime.size(); i++)
-        cout <<prime[i]<<" \n";
+    int t,tt=1;
+    scanf("%d",&tt);
+    for(t=1; t<=tt; t++)
+        solve(t);
     return 0;
 }
+
+

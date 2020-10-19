@@ -9,9 +9,8 @@
 #define Mod 1000000007
 #define limit 1000008
 using namespace std;
-///seive
+
 bool vis[limit];
-vector<int>prime;
 void seive()
 {
     vis[0]=vis[1]=1;
@@ -24,19 +23,33 @@ void seive()
             vis[j] = 1;
         }
     }
-    prime.pb(2);
-    for(int j=3; j<limit; j+=2)
-        if(vis[j]==0)
-            prime.pb(j);
 }
 
+void solve(int t)
+{
+    int i,j,n,m,k;
+    cin >> n ;
+    string s;
+    cin >> s;
+    int sum=0;
+    for(i=0; i<n; i++)
+        sum += s[i];
+    if(!vis[sum])
+        cout <<"Case #"<<t<<": Yes\n";
+    else
+        cout <<"Case #"<<t<<": No\n";
+    return ;
+}
 int  main()
 {
 //    Fast
 //    Freed
 //    Fout
     seive();
-    for(int i=0; i<prime.size(); i++)
-        cout <<prime[i]<<" \n";
+    int t,tt=1;
+    cin >> tt;
+    for(t=1; t<=tt; t++)
+        solve(t);
     return 0;
 }
+
