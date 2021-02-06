@@ -33,81 +33,55 @@ void seive()
 void solve(ll tc)
 {
     ll i,j,n,m,k;
-    n = prime.size();
-    ll ct[limit+5],sq[limit+5];
-    for(i=0; i<n; i++)
-    {
-        ct[prime[i]] = 0;
-        sq[prime[i]] = 0;
-    }
+
     cin >> n;
     ll D[n+5];
-    for(i=0; i<n; i++)
-    {
-        cin >> D[i];
-    }
     vector<ll> v;
-    v.pb(0);
-    ll mx=0;
+
     for(i=0; i<n; i++)
     {
-        m = D[i];
-        ll ok=1;
-        vector<ll>temp;
-        temp.clear();
+        cin >> m;
         for(j=0; prime[j]*prime[j]<=m; j++)
         {
-            ll x=0;
-            while(m%prime[j]==0)
+            ll x=prime[j]*prime[j];
+            while(m%x==0)
             {
-                x++;
-                m/=prime[j];
-            }
-            if(x&1)
-            {
-                ok = ok*prime[j];
-            }
-            else if(x)
-                temp.pb(prime[j]);
-        }
-        if(m>1) ok = ok*m;
-        if(ok>1)
-        {
-            v.pb(ok);
-        }
-        else
-        {
-            m = temp.size();
-            for(j=0; j<m; j++)
-            {
-                sq[temp[j]]++;
-                mx = max(mx,sq[temp[j]]);
+                m/=x;
             }
         }
+        v.pb(m);
     }
     v.pb(Mod);
-    m = v.size();
     sort(v.begin(),v.end());
     ll l=0;
+    m = v.size();
+    ll mx=0,ct=0,one=0;
     for(i=1; i<m; i++)
     {
         if(v[i]!=v[l])
         {
-            mx = max(mx,i-l);
+            n = i-l;
+            if(n%2==0)   ct+=n;
+            else if(v[l]==1) one = n;
+
+            mx = max(mx,n);
             l = i;
         }
     }
     cin >> m;
-    for(i=0; i<m; i++)
+    for(i=1; i<=m; i++)
     {
         cin >> k;
-        cout <<mx<<endl;
+        if(k==0)
+            cout <<mx<<endl;
+        else
+            cout <<max(mx,ct+one)<<endl;
     }
     return ;
 }
 int  main()
 {
-//    Fast
+    Fast
 //    Freed
 //    Fout
     seive();
