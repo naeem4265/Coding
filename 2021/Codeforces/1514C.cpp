@@ -15,7 +15,27 @@ void solve(ll t)
     ll i,j,n,m,k;
     string s;
     cin >> n ;
-
+    ll mul = 1,ct=0;
+    for(i=1; i<n; i++)
+    {
+        if(__gcd(i,n)==1)
+        {
+            mul = (mul*i)%n;
+            ct++;
+        }
+    }
+    if(mul!=1)
+        ct--;
+    cout <<ct<<endl;
+    cout <<"1 ";
+    for(i=2; i<n; i++)
+    {
+        if(__gcd(i,n)==1 && i!=mul)
+        {
+            cout <<i<<" ";
+        }
+    }
+    cout <<endl;
     return ;
 }
 int  main()
@@ -23,14 +43,8 @@ int  main()
 //    Fast
 //    Freed
 //    Fout
-
-    #ifndef ONLINE_JUDGE
-       freopen("in.txt", "r", stdin);
-    //   freopen("out.txt", "w", stdout);
-    #endif // ONLINE_JUDGE
-
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
         solve(t);
     return 0;
