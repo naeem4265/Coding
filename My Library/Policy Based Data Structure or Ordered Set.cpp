@@ -13,11 +13,11 @@ typedef tree<int, null_type, less<int>, rb_tree_tag,
 int  main()
 {
     int t,time,i;
-    new_data_type os;
+    new_data_type o_set;
     for(i=1; i<=10; i++)
     {
         scanf("%d",&time);
-        os.insert(time);
+        o_set.insert(time);
     }
     // Deleting 2 from the set if it exists
     if (o_set.find(2) != o_set.end())
@@ -25,7 +25,7 @@ int  main()
     // Finding the second smallest element in the set
     cout << *(o_set.find_by_order(1))
          << endl;
-    // elements strictly less than k=4
+    // number of elements strictly less than k=4
     cout << o_set.order_of_key(4)
          << endl;
     return 0;
