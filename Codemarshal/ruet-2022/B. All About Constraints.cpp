@@ -2,7 +2,7 @@
 #define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define Freed freopen ("0in.txt","r",stdin);
 #define Fout freopen ("0out.txt","w",stdout);
-#define ll long long int
+#define ll unsigned long long int
 #define pb push_back
 #define pi acos(-1.0)
 #define inf 1e18
@@ -14,18 +14,18 @@ using namespace std;
 void solve(ll tt)
 {
     ll i,j,n,m,k,q;
-    scanf("%lld %lld", &n, &q);
+    scanf("%llu %llu", &n, &q);
     ll d[n+5];
     memset(d, -1, sizeof(d));
 
     vector<pair<ll,ll> > v(q);
     for(i=0; i<q; i++)
     {
-        scanf("%lld %lld", &v[i].first, &v[i].second);
+        scanf("%llu %llu", &v[i].first, &v[i].second);
     }
     sort(v.begin(), v.end());
 
-    printf("Case %lld:\n",tt);
+    printf("Case %llu:\n",tt);
     for(i=0; i<q; i++)
     {
         ll l = v[i].first-1;
@@ -58,7 +58,7 @@ void solve(ll tt)
     }
     for(i=0; i<n; i++)
     {
-        printf("%lld", 1LL<<d[i]);
+        printf("%llu", 1LL<<d[i]);
         if(i<n-1)
             printf(" ");
         else
@@ -74,7 +74,7 @@ int  main()
 //    Freed
 //    Fout
     ll t,tt=1;
-    scanf("%lld", &tt);
+    scanf("%llu", &tt);
     for(t=1; t<=tt; t++)
         solve(t);
     return 0;
