@@ -21,7 +21,7 @@ ll rec(ll pos,ll W)
         dp[pos][W] = p[pos]+rec(pos+1, W-w[pos]);
     ll temp = rec(pos+1, W);
     if(dp[pos][W] < temp)
-        dp[pos][W] = rec(pos+1, W);
+        dp[pos][W] = temp;
     return dp[pos][W];
 }
 
