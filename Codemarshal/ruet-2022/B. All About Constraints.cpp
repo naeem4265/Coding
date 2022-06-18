@@ -14,28 +14,32 @@ using namespace std;
 void solve(ll tt)
 {
     ll i,j,n,m,k,q;
-    scanf("%llu %llu", &n, &q);
+    //scanf("%llu %llu", &n, &q);
+    cin >> n >> q;
     ll d[n+5];
     memset(d, -1, sizeof(d));
 
     vector<pair<ll,ll> > v(q);
     for(i=0; i<q; i++)
     {
-        scanf("%llu %llu", &v[i].first, &v[i].second);
+        //scanf("%llu %llu", &v[i].first, &v[i].second);
+        cin >> v[i].first >> v[i].second;
     }
     sort(v.begin(), v.end());
 
-    printf("Case %llu:\n",tt);
+    //printf("Case %llu:\n",tt);
+    cout <<"Case "<<tt<<":\n";
     for(i=0; i<q; i++)
     {
         ll l = v[i].first-1;
         ll r = v[i].second-1;
-        if((r-l)>64LL)
+        if((r-l)>64LLU)
         {
-            printf("Impossible\n");
+            //printf("Impossible\n");
+            cout <<"Impossible\n";
             return ;
         }
-        bool vis[66];
+        bool vis[68];
         memset(vis, 0, sizeof(vis));
         for(j=l,k=0; j<=r; j++)
         {
@@ -56,13 +60,16 @@ void solve(ll tt)
         if(d[i]==-1)
             d[i] = 0;
     }
+    ll one = 1;
     for(i=0; i<n; i++)
     {
-        printf("%llu", 1LL<<d[i]);
-        if(i<n-1)
-            printf(" ");
-        else
-            printf("\n");
+        //printf("%llu", one<<d[i]);
+        cout << (one<<d[i]);
+        if(i<(n-1)) cout <<" ";  else  cout <<endl;
+//        if(i<(n-1))
+//            printf(" ");
+//        else
+//            printf("\n");
     }
     return ;
 }
@@ -70,11 +77,12 @@ void solve(ll tt)
 
 int  main()
 {
-//    Fast
+    Fast
 //    Freed
 //    Fout
     ll t,tt=1;
-    scanf("%llu", &tt);
+    //scanf("%llu", &tt);
+    cin >> tt;
     for(t=1; t<=tt; t++)
         solve(t);
     return 0;
