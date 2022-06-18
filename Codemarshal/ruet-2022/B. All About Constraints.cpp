@@ -33,7 +33,7 @@ void solve(ll tt)
     {
         ll l = v[i].first-1;
         ll r = v[i].second-1;
-        if((r-l)>64LLU)
+        if((r-l+1)>64LLU)
         {
             //printf("Impossible\n");
             cout <<"Impossible\n";
