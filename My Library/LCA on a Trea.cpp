@@ -10,21 +10,21 @@
 #define limit 1000008
 using namespace std;
 vector<ll> g[limit];
-ll height[limit],pt[limit][20];
+ll height[limit],st[limit][20];
 
 ///LCA build O(n*logn)
-void pt_build(ll u,ll p)
+void st_build(ll u,ll p)
 {
     for(ll v: g[u])
     {
         if(v==p)  continue;
         height[v] = height[u] + 1;
-        pt[v][0] = u;
+        st[v][0] = u;
         for(ll j=1; j<20; j++)
         {
-            pt[v][j] = pt[pt[v][j-1]][j-1];
+            st[v][j] = st[st[v][j-1]][j-1];
         }
-        pt_build(v,u);
+        st_build(v,u);
     }
 }
 
@@ -38,18 +38,18 @@ ll LCA(ll u, ll v)
     for(ll j=19; j>=0; j--)
     {
         if( dis&(1<<j) )
-            v = pt[v][j];
+            v = st[v][j];
     }
     if(u==v) return u;
     for(ll j=19; j>=0; j--)
     {
-        if(pt[u][j]!=pt[v][j])
+        if(st[u][j]!=st[v][j])
         {
-            u = pt[u][j];
-            v = pt[v][j];
+            u = st[u][j];
+            v = st[v][j];
         }
     }
-    return pt[u][0];
+    return st[u][0];
 }
 
 
@@ -68,9 +68,9 @@ void Please_AC(ll tt)
             g[v].pb(i);
         }
     }
-    memset(pt, 0, sizeof(pt));
+    memset(st, 0, sizeof(st));
     height[0] = 0;
-    pt_build(0,0);
+    st_build(0,0);
     cin >> q;
     while(q--)
     {
