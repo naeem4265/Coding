@@ -7,41 +7,42 @@
 #define pi acos(-1.0)
 #define inf 1e18
 #define Mod 1000000007
-#define limit 1000008
+#define limit 600008
 using namespace std;
 
 ll ans[limit];
 
-vector<pair<ll,ll> > v;
+vector<ll> v;
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,a,q;
+    ll i,j,n,q;
 
     cin >> n >> q;
+    ll a[2*n+5];
     for(i=0; i<n+5; i++)
         ans[i] = -1;
-    v.clear();
-    ll sz = 0;
 
     for(i=1; i<=n; i++)
     {
-        cin >> a;
-        while(sz && v[sz-1].first>a )
+        cin >> a[i];
+        a[n+i] = a[i]+1;
+    }
+    v.clear();
+    ll sz = 0;
+    for(i=1; i<=(2LL*n); i++)
+    {
+        while(sz && a[v[sz-1]]>a[i])
         {
-            ans[v[sz-1].second] = a;
-            v.pop_back();
             sz--;
+            ans[v[sz]] = a[i];
+            v.pop_back();
         }
-        v.pb({a,i});
+        v.pb(i);
         sz++;
     }
-    while(sz && v[sz-1].first> (v[0].first+1) )
-    {
-        ans[v[sz-1].second] = v[0].first+1;
-        v.pop_back();
-        sz--;
-    }
+
+
     while(q--)
     {
         ll x;
@@ -57,7 +58,6 @@ void Please_AC(ll tt)
 
     return ;
 }
-
 
 int  main()
 {
