@@ -10,7 +10,7 @@
 #define limit 1000008
 using namespace std;
 
-void solve(int t)
+void solve(int tt)
 {
     int i,j,n,m,k;
     cin >> n ;
