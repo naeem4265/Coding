@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define Freed freopen ("0in.txt","r",stdin);
@@ -14,8 +15,14 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    ll a,b,c;
+    cin >> a >> b >> c;
+
+    cout <<"Case "<<tt<<": ";
+    if((a+b+c)%3==0)
+        cout <<"Peaceful\n";
+    else
+        cout <<"Fight\n";
 
 
     return ;
@@ -33,4 +40,3 @@ int  main()
         Please_AC(t);
     return 0;
 }
-

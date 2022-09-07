@@ -14,8 +14,22 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    ll a,b ,c;
+    //cin>> a  >> b >>c >>k;
+    scanf("%lld %lld %lld %lld", &a, &b, &c, &k);
+    printf("Case %lld: ",tt);
+    //cout<<"Case "<<tt<<": ";
+
+    if((a+b+c)%3)  printf("Fight\n");
+    else {
+
+
+        ll avg=(a+b+c)/3;
+
+        if(abs(avg-a)%k || abs(avg-b)%k || abs(avg-c)%k )  printf("Fight\n");
+
+        else   printf("Peaceful\n");
+    }
 
 
     return ;
@@ -24,11 +38,12 @@ void Please_AC(ll tt)
 
 int  main()
 {
-    Fast
+   // Fast
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
+    scanf("%lld", &tt);
     for(t=1; t<=tt; t++)
         Please_AC(t);
     return 0;

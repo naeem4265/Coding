@@ -13,11 +13,15 @@ using namespace std;
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
-
-
+    ll a,b,c;
+    cin >> a >> b >> c;
+    ll ans = a+b*c;
+    ans = max(ans, a*(b+c));
+    ans = max(ans, a*(b*c));
+    ans = max(ans, (a+b)*c);
+    ans = max(ans, (a*b)+c);
+    ans = max(ans, (a+b)+c);
+    cout << ans <<endl;
     return ;
 }
 
@@ -28,9 +32,8 @@ int  main()
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
         Please_AC(t);
     return 0;
 }
-

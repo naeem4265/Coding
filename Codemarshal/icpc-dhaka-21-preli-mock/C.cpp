@@ -14,10 +14,20 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
+
     cin >> n;
     ll d[n+5];
-
-
+    ll ans = 0,sum=0;
+    for(i=1; i<n; i++)
+    {
+        ll in,ot;
+        cin >> in >>ot;
+        sum += in;
+        sum -= ot;
+        ans = max(ans,sum);
+    }
+    cout <<"Case "<<tt<<": ";
+    cout << ans <<endl;
     return ;
 }
 
@@ -33,4 +43,3 @@ int  main()
         Please_AC(t);
     return 0;
 }
-

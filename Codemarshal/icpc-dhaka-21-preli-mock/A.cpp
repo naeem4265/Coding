@@ -14,10 +14,18 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    while(1)
+    {
 
+        cin >> n;
+        if(!n)  return ;
+        ll d;
+        d = n%10;
+        n /= 10;
+        if(abs(n-5*d)%17==0)   cout <<1<<endl;
+        else cout <<0<<endl;
 
+    }
     return ;
 }
 
@@ -28,9 +36,8 @@ int  main()
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
         Please_AC(t);
     return 0;
 }
-
