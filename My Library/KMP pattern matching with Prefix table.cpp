@@ -16,8 +16,8 @@ void build(string p)
 {
     ll now = -1;
     pi_tab[0] = -1;
-    ll sz = p.size();
-    for(ll i=1; i<sz; i++)
+    ll szp = p.size();
+    for(ll i=1; i<szp; i++)
     {
         while( now!=-1 && p[now+1]!=p[i])
         {
@@ -32,7 +32,7 @@ void build(string p)
 ///kmp O(|s|)
 ll kmp(string s,string p)
 {
-    ll ans=0,now = -1, sz = s.size(),szp=p.size();
+    ll ans=0,now = -1, sz = s.size(),szp=p.size()-1;
     for(ll i=0; i<sz; i++)
     {
         while( now!=-1 && p[now+1]!=s[i])
@@ -40,7 +40,7 @@ ll kmp(string s,string p)
             now = pi_tab[now];
         }
         if(p[now+1]==s[i])
-            now++;;
+            now++;
         if(now==szp-1)  ans++;
     }
     return ans;
@@ -54,6 +54,7 @@ void Please_AC(ll tt)
     cin >> s >> p;
     m = s.size();
     build(p);
+    p = p+'#';
     cout <<"Case "<<tt<<": "<< kmp(s,p) <<endl;
     return ;
 }
