@@ -13,32 +13,21 @@ using namespace std;
 
 void Please_AC(ll tt)
 {
-    ll i,j,l,r,m,low=1,high=Mod,ans=1,x;
+    ll l,r,x,g,ans = 1e18;
     cin >> l >> r;
-    while(low<=high)
+    for(g=1; g<=sqrt(r+1); g++)
     {
-        m = (low+high)/2;
-        for(i=m,j=0; j<2000; j++,i++)
-        {
-            x = (l-1)/i;
-            x++;
-            if((x+1)*i<=r)
-            {
-                break;
-            }
-        }
-            x = (l-1)/i;
-            x++;
-            if((x+1)*i<=r)
-            {
-                ans = x*(x+1)*i;
-                low = m+1;
-            }
-            else
-            {
-                high = m-1;
-            }
-         // cout <<m<<endl;
+        ll x = l/g;
+        if(l%g) x++;
+        if((x+1)*g<=r)
+            ans = min(ans, x*(x+1)*g);
+    }
+    for(x=1; x<=sqrt(r+1); x++)
+    {
+        g = l/x;
+        if(l%x)  g++;
+        if((x+1)*g<=r)
+            ans = min(ans, x*(x+1)*g);
     }
     cout << ans <<endl;
 
