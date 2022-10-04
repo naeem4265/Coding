@@ -7,11 +7,10 @@
 #define pi acos(-1.0)
 #define inf 1e18
 #define Mod 1000000007
-#define limit 1000008
+#define limit 2000008
 using namespace std;
 
 vector<ll> v;
-///kmp pi table build O(|p|)
 ll pi_tab[limit],m;
 void build(string p)
 {
@@ -27,31 +26,9 @@ void build(string p)
         if(p[now+1]==p[i])
             now++;;
         pi_tab[i] = now;
-        //if(now==m)   v.pb(i-m-1);
+        if(now==m)   v.pb(i-m-1);
     }
 }
-
-///kmp O(|s|)
-ll kmp(string s,string p)
-{
-    ll ans=0,now = -1, sz = s.size(),szp=p.size();
-    for(ll i=0; i<sz; i++)
-    {
-        while( now!=-1 && p[now+1]!=s[i])
-        {
-            now = pi_tab[now];
-        }
-        if(p[now+1]==s[i])
-            now++;
-        if(now==szp-1)
-        {
-            ans++;
-            v.pb(i+1);
-        }
-    }
-    return ans;
-}
-
 
 void Please_AC(ll tt)
 {
@@ -59,11 +36,10 @@ void Please_AC(ll tt)
     string s,p;
     cin >> s >> p;
     m = p.size();  m--;
-    //p = p+'#'+s;
+    p = p+'#'+s;
     v.clear();
 
     build(p);
-    kmp(s,p);
     if(v.empty())
     {
         cout <<"Not Found\n";
@@ -75,7 +51,6 @@ void Please_AC(ll tt)
     return ;
 }
 
-///lightoj.com/problem/substring-frequency
 int  main()
 {
  //   Fast
