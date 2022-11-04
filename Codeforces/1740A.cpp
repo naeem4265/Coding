@@ -21,17 +21,16 @@ void Please_AC(ll tt)
     return ;
 }
 
-
 int  main()
 {
-    Fast
+//    Fast
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
     {
-        //printf("Case :%lld ",t);
+        cout <<"Case "<<t<<": ";
         Please_AC(t);
     }
     return 0;

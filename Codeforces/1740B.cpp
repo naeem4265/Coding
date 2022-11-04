@@ -15,23 +15,34 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
+    ll h[n+5],w[n+5];
+    ll mx1= 0, ans = 0;
+    for(i=0; i<n; i++)
+    {
+        cin >> h[i] >> w[i];
+        if(h[i]<w[i])  swap(h[i], w[i]);
+        ans += 2LL*w[i];
+
+        mx1 = max(mx1, h[i]);
+    }
+
+    cout <<ans+mx1*2LL <<endl;
+
 
 
     return ;
 }
 
-
 int  main()
 {
-    Fast
+//    Fast
 //    Freed
 //    Fout
     ll t,tt=1;
     cin >> tt;
     for(t=1; t<=tt; t++)
     {
-        //printf("Case :%lld ",t);
+        //cout <<"Case "<<t<<": ";
         Please_AC(t);
     }
     return 0;

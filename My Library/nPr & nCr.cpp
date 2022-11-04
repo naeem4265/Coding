@@ -13,6 +13,7 @@ using namespace std;
 ///nPr O(r)
 ll nPr(ll n,ll r)
 {
+    if(r>n)   return 0;
     ll ans=1;
     for(ll i=n,j=0; j<r; i--,j++)
         ans = (ans*i)%Mod;
@@ -20,9 +21,10 @@ ll nPr(ll n,ll r)
 }
 
 ///nCr O(n*r)
-long long int ncr[2000][2000];
-long long int nCr(long long int n, long long int r)
+ll ncr[2000][2000];
+ll nCr(ll n, ll r)
 {
+    if(r>n)  return 0;
     if(n==r) return 1;
     if(r==1) return n;
     if(ncr[n][r]) return ncr[n][r];
@@ -55,6 +57,7 @@ void factorial()
 // Function to return nCr % p in O(1) time
 ll nCrr(ll n, ll r)
 {
+    if(r>n)   return 0;
     ll ans = ((fact[n] * factorialNumInverse[r])
               % Mod * factorialNumInverse[n - r])
              % Mod;
