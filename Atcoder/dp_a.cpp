@@ -14,8 +14,17 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
-
+    ll h[n+5];
+    for(i=1; i<=n; i++)    cin >> h[i];
+    ll ans[n+5];
+    ans[n] = 0;
+    ans[n-1] = 1e18;
+    for(i=n; i>1; i--)
+    {
+        ans[i-1] = min(ans[i-1],ans[i]+abs(h[i]-h[i-1]));
+        ans[i-2] = ans[i]+abs(h[i]-h[i-2]);
+    }
+    cout << ans[1] <<endl;
 
     return ;
 }
@@ -27,7 +36,7 @@ int  main()
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

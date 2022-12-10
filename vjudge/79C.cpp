@@ -15,7 +15,20 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     cin >> n;
     ll d[n+5];
+    for(i=0; i<n; i++)
+    {
+        cin >> d[i];
+    }
+    ll csum[n+5];
+    csum[n] = 0;
+    ll ans = 0;
 
+    for(i=n-1; i>=0; i--)  csum[i] = (csum[i+1]+d[i])%Mod;
+    for(i=0; i<n-1; i++)
+    {
+        ans = ((d[i]*csum[i+1])%Mod+ans)%Mod;
+    }
+    cout << ans <<endl;
 
     return ;
 }
@@ -24,10 +37,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

@@ -13,9 +13,16 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
-
+    ll x,y;
+    cin >> x >> y;
+    if((min(x,y)+3)> max(x,y))
+    {
+        cout << "Yes\n";
+    }
+    else
+    {
+        cout <<"No\n";
+    }
 
     return ;
 }
@@ -24,10 +31,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+   // cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

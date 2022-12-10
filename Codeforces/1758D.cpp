@@ -5,8 +5,9 @@
 #define ll long long int
 #define pb push_back
 #define pi acos(-1.0)
-const ll limit = 1e6+5;
-const ll Mod = 1e9+7;
+#define inf 1e18
+#define Mod 1000000007
+
 using namespace std;
 
 
@@ -14,7 +15,24 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
+    ll limit = (n*2LL)*(n*2LL);
+    ll sum =0;
+    m = (n*n*2LL)/n;
+    j = m-1; if(j&1) j--;
+    k = j+1;
+    for(i=3; i<=n; i++, j--,k++)
+    {
+        if(i&1){
+            cout <<j<<" ";
+            sum +=j;
+        }
+        else{
+            cout <<k<<" ";
+            sum += k;
+        }
+    }
+    ll a = (limit-sum-(n*2LL))/2;
+    cout <<a<<" "<<a+n*2LL <<endl;
 
 
     return ;

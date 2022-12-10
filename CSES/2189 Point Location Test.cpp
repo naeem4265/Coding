@@ -5,16 +5,29 @@
 #define ll long long int
 #define pb push_back
 #define pi acos(-1.0)
-const ll limit = 1e6+5;
-const ll Mod = 1e9+7;
+#define inf 1e18
+#define Mod 1000000007
+#define limit 1000008
 using namespace std;
 
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    ll x1,x2,x3,y1,y2,y3;
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+    ll x = (x3-x1)*(y1-y2)-(x1-x2)*(y3-y1);
+    if(x==0)
+    {
+        cout <<"TOUCH\n";
+    }
+    else if(x<0)
+    {
+        cout <<"RIGHT\n";
+    }
+    else
+    {
+        cout <<"LEFT\n";
+    }
 
 
     return ;

@@ -9,13 +9,27 @@ const ll limit = 1e6+5;
 const ll Mod = 1e9+7;
 using namespace std;
 
+ll bigmod(ll b,ll p, ll Mod)
+{
+    ll ans=1;
+    while(p)
+    {
+        if(p&1)
+            ans = (ans*b)%Mod;
+        b = (b*b)%Mod;
+        p = p/2;
+    }
+    return ans;
+}
 
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
-
+    cin >> a >> b >> p >> x;
+    for(i=0; i<p; i++)
+    {
+        ll x = bigmod(a, i, p);
+    }
 
     return ;
 }
@@ -24,10 +38,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+   // cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

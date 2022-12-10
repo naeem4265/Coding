@@ -13,10 +13,26 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
-
-
+    cin >> n >> m;
+    ll d[n+5],sum=1;
+    for(i=0; i<n; i++)
+    {
+        cin >> d[i];
+        sum += d[i];
+    }
+    sort(d, d+n);
+    for(i=0,j=n-1; i<j; )
+    {
+        if(d[i]+d[j]>m)
+        {
+            sum++;
+            j--;
+            continue;
+        }
+        j--;
+        i++;
+    }
+    cout << sum <<endl;
     return ;
 }
 
@@ -24,10 +40,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

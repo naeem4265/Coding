@@ -5,8 +5,9 @@
 #define ll long long int
 #define pb push_back
 #define pi acos(-1.0)
-const ll limit = 1e6+5;
-const ll Mod = 1e9+7;
+#define inf 1e18
+#define Mod 1000000007
+#define limit 1000008
 using namespace std;
 
 
@@ -14,8 +15,18 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
-
+    if(n&1)
+    {
+        for(i=1; i<=n; i++)
+        {
+            cout <<1<<" ";
+        }
+        cout <<endl;
+        return;
+    }
+    cout <<"3 1 ";
+    for(i=3; i<=n; i++)  cout <<"2 ";
+    cout <<endl;
 
     return ;
 }

@@ -14,8 +14,20 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
-
+    ll d[n+5][n+5];
+    ll sum=0, mn = 1e9+5;
+    for(i=0; i<n; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            cin >> d[i][j];
+            sum += d[i][j];
+            if((i+j+1)==n)
+                mn = min(mn, d[i][j]);
+        }
+    }
+    sum -= mn;
+    cout << sum <<endl;
 
     return ;
 }
@@ -24,10 +36,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+   // cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

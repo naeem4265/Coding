@@ -13,9 +13,27 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
+    cin >> n >> m >> k;
     ll d[n+5];
-
+    for(i=1; i<=n; i++)
+    {
+        cin >> d[i];
+    }
+    ll ans = d[n]-d[1]+1;
+    vector<ll> v;
+    for(i=2; i<=n; i++)
+    {
+        v.pb(d[i]-d[i-1]-1);
+    }
+    sort(v.begin(), v.end());
+    reverse(v.begin(), v.end());
+    m = v.size();
+    k--;
+    for(i=0; i<min(m,k); i++)
+    {
+        ans -= max(0LL, v[i]);
+    }
+    cout << ans <<endl;
 
     return ;
 }
@@ -24,10 +42,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
-    cin >> tt;
+   // cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

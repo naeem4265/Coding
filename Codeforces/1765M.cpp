@@ -14,9 +14,17 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
-
-
+    ll a=1,b=n-1;
+    for(i=2; i*i<=n; i++)
+    {
+        if(n%i==0)
+        {
+            a = n/i;
+            b = n-a;
+            break;
+        }
+    }
+    cout << a << " "<< b <<endl;
     return ;
 }
 
@@ -24,8 +32,6 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-//    Freed
-//    Fout
     ll t,tt=1;
     cin >> tt;
     for(t=1; t<=tt; t++)
