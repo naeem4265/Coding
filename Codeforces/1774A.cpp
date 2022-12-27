@@ -14,7 +14,21 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
+    string s;
+    cin >> s;
+    ll ct=0;
+    if(s[0]=='1')   ct++;
+    for(i=1; i<n; i++)
+    {
+        if(s[i]=='1')
+        {
+            if(ct>0){  cout <<'-';    ct--; }
+            else{  cout <<'+';   ct++; }
+        }
+        else
+            cout <<'-';
+    }
+    cout <<endl;
 
     return ;
 }

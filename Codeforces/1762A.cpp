@@ -15,7 +15,34 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     cin >> n;
     ll d[n+5];
-
+    ll sum = 0, ans = 1e18;
+    for(i=0; i<n; i++)
+    {
+        cin >> d[i];
+        sum += d[i];
+        if(d[i] & 1)
+        {
+            ll ct = 0;
+            while(d[i] &1 )
+            {
+                ct++;
+                d[i] /= 2;
+            }
+            ans = min(ans, ct);
+        }
+        else
+        {
+            ll ct = 0;
+            while(d[i]%2==0 )
+            {
+                ct++;
+                d[i] /= 2;
+            }
+            ans = min(ans, ct);
+        }
+    }
+    if(sum%2==0)   ans = 0;
+    cout << ans <<endl;
     return ;
 }
 

@@ -12,9 +12,23 @@ using namespace std;
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    ll n, x, y; cin >> n >> x >> y;
+    string ch; cin >> ch;
+    ll a = 0, b = 0, c = 0;
+    for(char cc: ch){
+        if(cc == 'A') a++;
+        else if(cc == 'B') b++;
+        else c++;
+    }
+    ll ans = min(a, x);
+      x -= ans;
+     ans += min(b, y);
+     y -= min(b, y);
+     ans += min(x, c);
+     c -= min(x, c);
+     ans += min(y, c);
+     cout << ans << endl;
+
 
     return ;
 }
@@ -34,4 +48,5 @@ int  main()
     }
     return 0;
 }
+
 

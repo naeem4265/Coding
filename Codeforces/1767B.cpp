@@ -15,6 +15,15 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     cin >> n;
     ll d[n+5];
+    for(i=0; i<n; i++)   cin >> d[i];
+    sort(d+1, d+n);
+    for(i=1; i<n; i++)
+    {
+        ll x = d[i]-d[0];
+        d[0] += max(0LL, (x+1)/2);
+
+    }
+    cout << d[0] <<endl;
 
     return ;
 }

@@ -13,8 +13,14 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+    cin >> n >> m >> k;
+    ll d[m+5];
+    for(i=0; i<m; i++)  cin >> d[i];
+    sort(d, d+m);
+    ll x = n/k;
+    if(n%k) x++;
+    if(d[m-1]>x)   cout << "NO\n";
+    else           cout << "YES\n";
 
     return ;
 }

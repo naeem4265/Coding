@@ -12,9 +12,20 @@ using namespace std;
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,m,k,q;
-    cin >> n;
-    ll d[n+5];
+
+    ll n , x;
+    cin >> n >> x;
+
+    ll sum = 0  , mid = n/2+1;
+
+    for(int i=mid+1;i<=n;i++){
+        sum +=(x--);
+    }
+
+    for(int i=1;i<=mid;i++)
+    sum+=i;
+
+    cout << (sum-mid*n)<<endl;
 
     return ;
 }
@@ -34,4 +45,5 @@ int  main()
     }
     return 0;
 }
+
 

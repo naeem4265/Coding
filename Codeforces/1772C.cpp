@@ -10,12 +10,21 @@ const ll Mod = 1e9+7;
 using namespace std;
 
 
-void Please_AC(ll tt)
+void Best_of_LUCK_MESSI(ll tt)
 {
     ll i,j,n,m,k,q;
-    cin >> n;
+    cin >> k >> n;
     ll d[n+5];
-
+    d[1] = 1;
+    for(i=2; i<=k; i++)
+    {
+        m = n-(d[i-1]+i-1);
+        if(m>=(k-i))
+            d[i] = d[i-1]+i-1;
+        else
+            d[i] = d[i-1]+1;
+    }
+    for(i=1; i<=k; i++)   cout << d[i] <<" "; cout <<endl;
     return ;
 }
 
@@ -27,11 +36,10 @@ int  main()
     //Fout
     ll t,tt=1;
     cin >> tt;
+
     for(t=1; t<=tt; t++)
-    {
-        //printf("Case :%lld ",t);
-        Please_AC(t);
-    }
+        Best_of_LUCK_MESSI(t);
+
     return 0;
 }
 

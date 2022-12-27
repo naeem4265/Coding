@@ -15,6 +15,23 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     cin >> n;
     ll d[n+5];
+    ll mx = 0, mn=(1<<15)-1;   //cout <<mx <<" "<<mn<<endl;
+    for(i=0; i<n; i++)
+    {
+        cin >> d[i];
+        for(j=0; j<20; j++)
+        {
+            if(d[i] & (1<<j))
+            {
+                mx |= (1<<j);
+            }
+            else
+            {
+                mn = mn & ((1 << 20) -1 - (1<<j));
+            }
+        }
+    }
+    cout << mx-mn <<endl;
 
     return ;
 }

@@ -14,8 +14,27 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     cin >> n;
-    ll d[n+5];
-
+    ll d[n+5],mn = 1e18;
+    for(i=1; i<=n; i++)
+    {
+        cin >> d[i];
+        if(mn>d[i])   mn = d[i];
+    }
+    vector<pair<ll,ll> > v;
+    for(i=1; i<=n; i++)
+    {
+        if(d[i]==mn)  continue;
+        for(j=2; ; j = j << 1)
+        {
+            if(d[i]<=(mn*j))   break;
+        }
+        v.pb({i, mn*j-d[i]});
+    }
+    cout << v.size() <<endl;
+    for(i=0; i<v.size(); i++)
+    {
+        cout <<v[i].first<<" "<<v[i].second<<endl;
+    }
     return ;
 }
 
