@@ -1,51 +1,20 @@
-#include<bits/stdc++.h>
-#define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define Freed freopen ("0in.txt","r",stdin);
-#define Fout freopen ("0out.txt","w",stdout);
-#define ll long long int
-#define pb push_back
-#define pi acos(-1.0)
-const ll limit = 1e6+5;
-const ll Mod = 1e9+7;
-using namespace std;
+def Please_AC(t):
+    n,k = map(int, input().split())
+    d = [0]*(n+5)
+    for i in range(1, n+1):
+        if k>=i:
+            d[i] = 10
+            k -= i;
+        else:
+            d[i] = -9
+            d[i] -= (i-k-1)*10
+            k = 0
+    for i in range(1, n+1):
+        print(d[i], end=' ')
+    print()
 
 
-void Please_AC(ll tt)
-{
-    ll i,j,n,m,k,q;
-    cin >> n >> k;
-    ll d[n+5],l=0;
-    for(i=1; i<=n; i++)
-    {
-        if(k>=(i-l))
-        {
-            d[i] = 1;
-            k -= (i-l);
-        }
-        else
-        {
-            l = i;
-            d[i] = -1000;
-        }
-    }
-    for(i=1; i<=n; i++)   cout <<d[i]<<" "; cout <<endl;
-
-    return ;
-}
-
-
-int  main()
-{
-    Fast
-    //Freed
-    //Fout
-    ll t,tt=1;
-    cin >> tt;
-    for(t=1; t<=tt; t++)
-    {
-        //printf("Case :%lld ",t);
-        Please_AC(t);
-    }
-    return 0;
-}
-
+if __name__ == '__main__':
+    tt = int(input())
+    for t in range(1, tt+1):
+        Please_AC(t)
