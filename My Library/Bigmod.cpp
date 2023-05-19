@@ -11,14 +11,15 @@
 using namespace std;
 
 ///Iterative
-ll bigmod(ll b,ll p)
+ll bigmod(ll b,ll p,ll M)
 {
     ll ans=1;
+    b=(b+M)%M;
     while(p)
     {
         if(p&1)
-            ans = (ans*b)%Mod;
-        b = (b*b)%Mod;
+            ans = (ans*b)%M;
+        b = (b*b)%M;
         p = p/2;
     }
     return ans;
