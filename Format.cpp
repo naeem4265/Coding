@@ -13,8 +13,10 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
+    string s;
     cin >> n;
-    ll d[n+5];
+
+
 
     return ;
 }
@@ -23,8 +25,8 @@ void Please_AC(ll tt)
 int  main()
 {
     Fast
-    //Freed
-    //Fout
+//    Freed
+//    Fout
     ll t,tt=1;
     cin >> tt;
     for(t=1; t<=tt; t++)
@@ -34,4 +36,3 @@ int  main()
     }
     return 0;
 }
-

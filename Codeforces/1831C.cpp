@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
 #define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define Freed freopen ("0in.txt","r",stdin);
-#define Fout freopen ("0out.txt","w",stdout);
 #define ll long long int
 #define pb push_back
 #define pi acos(-1.0)
@@ -9,9 +7,10 @@ const ll limit = 1e6+5;
 const ll Mod = 1e9+7;
 using namespace std;
 
+
 vector<pair<ll,ll> > g[limit];
 ll ans;
-
+ 
 ll dfs(ll u, ll pr, ll seq)
 {
     ll cost = 0;
@@ -25,7 +24,7 @@ ll dfs(ll u, ll pr, ll seq)
     }
     return cost;
 }
-
+ 
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
@@ -35,7 +34,7 @@ void Please_AC(ll tt)
         g[i].clear();
     }
     ans = 0;
-
+ 
     for(i=1; i<n; i++)
     {
         ll u,v;
@@ -46,16 +45,20 @@ void Please_AC(ll tt)
     }
     ans = dfs(1, 0, Mod);
     cout << ans <<endl;
-
+ 
     return ;
 }
 
 
 int  main()
 {
+/*
+#ifndef ONLINE_JUDGE
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+#endif
+*/
     Fast
-    //Freed
-    //Fout
     ll t,tt=1;
     cin >> tt;
     for(t=1; t<=tt; t++)
