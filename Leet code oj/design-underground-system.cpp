@@ -4,7 +4,7 @@ public:
     long long time[1000005];
     map<pair<string, string> , long long> mp;
     long long k=1;
-    double cnt[1000006], dis[1000006];
+    double cnt[20006], dis[20006];
     
     UndergroundSystem() {
         k = 1;
