@@ -34,17 +34,26 @@ vector<Task> taskList = {{0, 50.0}, {1, 100.0}, {2, 150.0},{3, 200.0}, {4, 300.0
 vector<VM> vmList = {{0, 50.0}, {1, 100.0}, {2, 200.0}, {3, 350.0}, {4, 500.0}};
 
 // Function to evaluate the fitness of a particle's mapping.Fitness value is maximum Ready time.
-pair<double, double> evaluateFitness(const map<int, double>& vRTMap)
+double evaluateFitness(const map<int, double>& vRTMap)
 {
     double fitness = 0.0;
-    double minimum = 1e18;
+    double totalThroughput = 0.0;
+
+    // Calculate the total throughput by summing the inverse of completion times for all tasks
     for (const auto& entry : vRTMap)
     {
-        fitness = max(fitness, entry.second);    //cout <<entry.first<<" here "<<entry.second<<endl;
-        minimum = min(minimum, entry.second);
+        double completionTime = entry.second;
+        totalThroughput += 1.0 / completionTime;
     }
-    return {fitness, minimum};
+
+    // Normalize the total throughput by dividing it by the number of tasks
+    int taskCount = vRTMap.size();
+    if (taskCount > 0)
+        fitness = totalThroughput / taskCount;
+
+    return fitness;
 }
+
 
 // Function to calculate the execution time of a task on a VM
 double getExecutionTime(const Task& task, const VM& vm)
@@ -67,7 +76,7 @@ void updateTaskVmMapping(map<int, map<Task, VM>>& pMap, int p, int position, con
 
 // Function to initialize the particles and their mappings
 map<int, map<Task, VM> > initializeParticles(int taskCount, int vmCount,int noParticles,
-map<int, pair<double, double> >& pbMap, map<int, map<Task, VM>>& pMap, map<int, map<Task, VM>>& gbFMap, map<int,double>& vRTMap, const vector<VM>& vmList, pair<double, double> &gBest)
+map<int, double>& pbMap, map<int, map<Task, VM>>& pMap, map<int, map<Task, VM>>& gbFMap, map<int,double>& vRTMap, const vector<VM>& vmList, double &gBest)
 {
     map<int, map<Task, VM>> particles;
     for (int p = 0; p < noParticles; ++p)
@@ -85,11 +94,11 @@ map<int, pair<double, double> >& pbMap, map<int, map<Task, VM>>& pMap, map<int, 
             updateVmReadinessTime(vRTMap, vm, task, execTime);
             updateTaskVmMapping(pMap, p, pos, task, vm);    //cout <<"here "<<vRTMap[vm.vmId]<<endl;
         }
-        pair<double,double> pBestValue = evaluateFitness(vRTMap);        //cout <<p<<" "<<pBestValue<<endl;
+        double pBestValue = evaluateFitness(vRTMap);        //cout <<p<<" "<<pBestValue<<endl;
         pbMap[p] = pBestValue;
         particles[p] = particle;
         pMap[p] = particle;
-        if(pBestValue.first < gBest.first)
+        if(pBestValue < gBest)
         {
             gBest = pBestValue;
             gbFMap[0] = particle;
@@ -116,15 +125,15 @@ int main()
     int taskCount = taskList.size();
     int vmCount = vmList.size();
 
-    map<int, pair<double, double> > pbMap;   //personal best value for particle. initially 0.
+    map<int, double> pbMap;   //personal best value for particle. initially 0.
     map<int, double> vRTMap;      //virtual machine id ready time
     map<int, map<Task, VM>> pMap;    //protiti particle er jonne protiti task, machine map kora ace.
     map<int, map<Task, VM>> gbFMap;  //global best function map.
     int itr = 1;
-    int maxItr = 1000;
+    int maxItr = 10000;
     int noParticles = 5;
     int Ps = 1;
-    pair<double,double> gBest={1e18, 0.0};
+    double gBest=1e18;
 
     map<int, map<Task, VM>> particles = initializeParticles(taskCount, vmCount, noParticles, pbMap, pMap, gbFMap, vRTMap, vmList, gBest);
 
@@ -154,7 +163,7 @@ int main()
                 double& v = particle[task].processingCapacity;
                 int pos = particle[task].vmId;
 
-                v = (w * v) + (c1 * r1 * (pbMap[p].first - pos)) + (c2 * r2 * (gbFMap[0][task].processingCapacity - pos));
+                v = (w * v) + (c1 * r1 * (pbMap[p] - pos)) + (c2 * r2 * (gbFMap[0][task].processingCapacity - pos));
 
                 pos = pos + (int)v;
                 if (pos >= vmCount || pos < 0)
@@ -169,14 +178,14 @@ int main()
             }
 
 
-            pair<double, double> pBestValue = evaluateFitness(vRTMap);                //cout<<p<<" "<<pBestValue<<" "<<pbMap[p]<<" "<<gBest<<endl;
+            double pBestValue = evaluateFitness(vRTMap);                //cout<<p<<" "<<pBestValue<<" "<<pbMap[p]<<" "<<gBest<<endl;
                                                                          //out(p+1, gbFMap, vRTMap);
             if (pBestValue < pbMap[p])
             {
                 pbMap[p] = pBestValue;
                 ss++;
             }
-            if(pBestValue.first < gBest.first || (abs(pBestValue.first-gBest.first)<=1e9 && pBestValue.second > gBest.second))
+            if(pBestValue < gBest)
             {
                 gbFMap[0] = pMap[p];
                 gBest = pBestValue;
