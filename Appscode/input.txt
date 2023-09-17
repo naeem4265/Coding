@@ -1,0 +1,9 @@
+[A, B, C]
+Add D
+Check version:2 D
+Check version:2 E
+Add E
+Check version:3 E
+Modify D D2
+Check version:4 D
+Check version:4 D2
