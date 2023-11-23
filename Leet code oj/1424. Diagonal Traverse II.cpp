@@ -2,9 +2,9 @@ class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& nums) {
         vector<pair<pair<int,int>,int>> v;
-        for(int i=0,k=1e9; i<nums.size(); i++){
-            for(int j=0; j<nums[i].size(); j++,k--){
-                v.push_back({{i+j,k}, nums[i][j]});
+        for(int i=0; i<nums.size(); i++){
+            for(int j=0; j<nums[i].size(); j++){
+                v.push_back({{i+j,-i}, nums[i][j]});
             }
         }
         sort(v.begin(), v.end());
