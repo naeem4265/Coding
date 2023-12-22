@@ -15,7 +15,26 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
+    ll ace[41];
+    memset(ace, 0, sizeof(ace));
 
+    while(n--) {
+        ll type, v;
+        cin >> type >> v;
+        if( type == 1 ) {
+            ace[v]++;
+        } else {  
+            ll temp = 0;   
+            for(i=40; i>=0; i-- ) {
+                temp = temp*2LL;
+                if( v & (1LL<<i) )
+                    temp++;
+                temp -= min(temp, ace[i]);
+            }
+            if( !temp ) cout << "YES\n";
+            else        cout << "NO\n";    
+        } 
+    }
     return ;
 }
 
@@ -26,7 +45,7 @@ int  main()
 //    Freed
 //    Fout
     ll t,tt=1;
-    cin >> tt;
+    //cin >> tt;
     for(t=1; t<=tt; t++)
     {
         //printf("Case :%lld ",t);

@@ -14,8 +14,30 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n;
+    cin >> s;
+    n = s.size();
+    ll one = 0, zero = 0;
+    for(i=0; i<n; i++ ) {
+        if( s[i]=='0')   zero++;
+        else one++;
+    }
+    for(i=0; i<n; i++ ) {
+        if( s[i]=='0' ) {
+            if( !one ) {
+                cout << n-i <<endl;
+                return;
+            }
+            one--;
+        } else {
+            if( !zero ) {
+                cout << n-i <<endl;
+                return;
+            }
+            zero--;
+        }
+    }
 
+    cout << 0 <<endl;
     return ;
 }
 

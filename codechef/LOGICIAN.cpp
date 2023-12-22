@@ -15,6 +15,19 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
+    cin >> s;
+    bool ok = 0;
+    for(i=0; i<n; i++ ) {
+        if( s[i]=='0' )  ok = 1;
+        if( ok ) {
+            cout <<"NO\n";
+        } else if(i==(n-1)) {
+            cout <<"YES\n";
+        } else {
+            cout <<"IDK\n";
+        }
+    }
+
 
     return ;
 }

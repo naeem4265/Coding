@@ -10,11 +10,30 @@ const ll Mod = 1e9+7;
 using namespace std;
 
 
+
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n;
+    cin >> n >> k;
+    vector< pair<ll,ll> > v(n);
+
+    for(i=0; i<n; i++ )  cin >> v[i].first;
+    for(i=0; i<n; i++)   cin >> v[i].second;
+
+    ll idx = 0;
+    for(i=0; i<n; i++ ) {
+        if(  v[i].second > v[idx].second )    idx = i;
+    }
+    
+    ll ans = 0,mx = 0, sum = 0;
+    for( i=0; i<min(n,k); i++ ) {
+
+        sum += v[i].first ;
+        mx = max( mx, v[i].second );
+        ans = max(ans, sum+(max(0LL, k-i-1))*mx);    //cout <<i<<" "<<j<<" "<<mx<<" "<<sum<<" "<<ans<<endl;
+    }
+    cout << ans <<endl;
 
     return ;
 }

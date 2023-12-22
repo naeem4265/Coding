@@ -15,6 +15,26 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
+    ll a[n+5];
+    for( i=0; i<n; i++ )  cin >> a[i];
+    sort( a, a+n );
+    ll ans = 0;
+    ll sum = a[0];
+    
+    ll out[n+5];
+    out[0] = a[0];
+    for( i=1,j=1,k= n-1; i<n; i++ ){
+        if( sum>= a[i]){  
+            out[k--] = a[i]; 
+            ans++;
+        } else  {
+            sum += a[i];
+            out[j++] = a[i];    
+        }
+    }  
+    cout << ans <<endl;
+    for( i=0; i<n; i++ ) cout << out[i] <<" ";   cout <<endl;
+
 
     return ;
 }

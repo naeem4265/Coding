@@ -3,6 +3,11 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "complex": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "new": "cpp",
+        "sstream": "cpp",
+        "regex": "cpp",
+        "chrono": "cpp",
+        "span": "cpp"
     }
 }

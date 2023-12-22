@@ -15,7 +15,23 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
-
+    m = 0;
+    ll temp = 1, ok = 0;
+    while( n ) {
+        if(ok)
+            temp = temp*10;
+        ok = 1;
+        ll d = temp* (n%10LL);
+        n /= 10LL;
+        if( !d )  continue;
+        m += d;
+                    
+        if( n && m > n ) {
+            cout <<n<<" "<<m<<endl;
+            return;
+        }
+    }
+    cout << -1 <<endl;
     return ;
 }
 

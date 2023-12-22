@@ -9,13 +9,30 @@ const ll limit = 1e6+5;
 const ll Mod = 1e9+7;
 using namespace std;
 
+struct stc{
+    ll a, b, d;
+};
+
+bool operator<(stc x, stc y) {
+    return x.d > y.d;
+}
 
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
-
+    stc arr[n+5];
+    for(i=0; i<n; i++ )  cin >> arr[i].a;
+    for(i=0; i<n; i++ )  cin >> arr[i].b;
+    for(i=0; i<n; i++ )  arr[i].d = arr[i].a + arr[i].b;
+    sort( arr, arr+n);
+    ll ans = 0;
+    for(i=0; i<n; i++ ) {
+        if( i&1 )   ans -= arr[i].b-1;
+        else        ans += arr[i].a-1;
+    }
+    cout << ans <<endl;
     return ;
 }
 

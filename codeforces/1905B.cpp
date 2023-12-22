@@ -15,7 +15,18 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
-
+    vector<ll> g[n+5];
+    for(i=1; i<n; i++ ) {
+        ll u,v;
+        cin >> u >> v;
+        g[u].pb(v);
+        g[v].pb(u);
+    }
+    ll ans = 0;
+    for(i=1; i<=n; i++ ) {
+        if( g[i].size() == 1)  ans++;
+    }
+    cout << (ans+1)/2 <<endl;
     return ;
 }
 

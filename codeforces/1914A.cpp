@@ -15,7 +15,18 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
-
+    cin >> s;
+    ll cnt[30];
+    memset(cnt, 0, sizeof(cnt));
+    ll ans = 0;
+    sort(s.begin(), s.end());
+    for(i=0,j=0; i<n; i++ ) {
+        cnt[s[i]-'A'+1]++;
+    }
+    for(i=1; i<=26; i++ ) {
+        if( cnt[i]>=i )  ans++;
+    }
+    cout << ans <<endl;
     return ;
 }
 

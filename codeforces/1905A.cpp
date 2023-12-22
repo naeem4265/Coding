@@ -14,8 +14,8 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n;
-
+    cin >> n >> m;
+    cout << max(n,m ) <<endl;
     return ;
 }
 

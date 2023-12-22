@@ -15,6 +15,19 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n;
+    ll a[n+5], cnt[n+5];
+    memset( cnt, 0, sizeof(cnt));
+    for( i=0; i<n; i++ ) {
+        cin >> a[i];
+    }
+    for(i=0; i<n; i++ ) {
+        cin >> m;
+        cnt[a[i]] = max(cnt[a[i]], m);
+    }
+    ll ans = 0;
+    for( i=1; i<=n; i++)   ans += cnt[i];
+    cout << ans <<endl;
+
 
     return ;
 }
