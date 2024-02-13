@@ -15,6 +15,21 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
+    ll a[n+5], carry = 0, sum = 0;
+    for(i=0; i<n; i++ ) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    m = sum/n;
+    for( i=0; i<n; i++ ) {
+        carry += a[i];
+        if( carry < m ) {
+            cout << "NO\n";
+            return;
+        }
+        carry -= m;
+    }
+    cout << "YES\n";
 
     return ;
 }

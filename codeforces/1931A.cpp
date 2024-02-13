@@ -2,7 +2,7 @@
 #define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define Freed freopen ("0in.txt","r",stdin);
 #define Fout freopen ("0out.txt","w",stdout);
-#define ll long long int
+#define ll int
 #define pb push_back
 #define pi acos(-1.0)
 const ll limit = 1e6+5;
@@ -13,9 +13,16 @@ using namespace std;
 void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
-    string s;
+    string s="";
     cin >> n ;
-
+    m = max(1, n-26*2);
+    s += ('a'+m-1);
+    n -= m;
+    m = max(1, n-26);
+    s += ('a'+m-1);
+    n -= m;
+    s += ('a'+n-1);
+    cout << s <<endl;
     return ;
 }
 

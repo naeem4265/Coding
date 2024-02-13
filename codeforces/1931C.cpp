@@ -15,6 +15,18 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
+    ll a[n+5];
+    for( i=0; i<n; i++ ) {
+        cin >> a[i];
+    }
+    ll l=1, r = 1;
+    while( l < n && a[l] == a[l-1])   l++;
+    for( i=n-2,r=1; i>=0; i--,r++ ) {
+        if( a[i] != a[i+1] )   break;
+    }
+    ll ans = max( l, r);
+    if( a[0] == a[n-1] )  ans = min( n, l+r );
+    cout << n - ans <<endl;
 
     return ;
 }

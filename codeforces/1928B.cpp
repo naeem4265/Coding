@@ -14,8 +14,22 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n ;
-
+    cin >> n;
+    vector<ll> v;
+    map<ll,bool> mp;
+    ll ans = 0;
+    for(i=1; i<=n; i++) {
+        cin >> m;
+        if( mp[m])   continue;
+        v.pb(m);
+        mp[m] = 1;
+    }
+    sort( v.begin(), v.end() ) ;
+    for(i=0,j=0; i<v.size(); i++) {
+        while( j<i && (v[i]-v[j])>=n )   j++;
+        ans = max( ans, i-j+1 );
+    }
+    cout << ans <<endl;
     return ;
 }
 

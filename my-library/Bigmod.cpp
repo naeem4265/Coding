@@ -43,7 +43,7 @@ int  main()
     int i,tt=1;
     ll n,x,y,a,b,c,d,e,s,t;
     cin >> b >> n;
-    cout <<bigmod(b,n)<<endl;
+    cout <<bigmod(b,n, Mod )<<endl;
   return 0;
 }
 

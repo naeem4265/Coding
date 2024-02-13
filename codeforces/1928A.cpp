@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #define Fast ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define Freed freopen ("0in.txt","r",stdin);
@@ -14,7 +15,9 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n ;
+    cin >> n >> m;
+    if( ( n+m)>=4 && (( n%2==0 && (m + n/2) != n) || (m%2==0 && (n + m/2) != m )))  cout <<"YES\n";
+    else cout <<"NO\n";
 
     return ;
 }
