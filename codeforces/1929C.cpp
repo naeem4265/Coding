@@ -12,11 +12,20 @@ using namespace std;
 
 void Please_AC(ll tt)
 {
-    ll i,j,n,m,k,q;
-    string s;
-    cin >> n ;
-    cout << n <<endl;
+    ll i,j,k,x,a;
+    cin >> k >> x >> a ;
+    if( x >= 40 ) {
+        cout <<"NO\n";
+        return;
+    }
+    ll temp = 1LL << x;
+    a -= temp-1;
+    if( a >= temp ) {
+        cout <<"YES\n";
+        return;
+    }
 
+    cout <<"NO\n";
     return ;
 }
 

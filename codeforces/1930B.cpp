@@ -15,7 +15,11 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
-    cout << n <<endl;
+    for( i=1, j=n; i<=j; i++, j--) {
+        cout << i<< " ";
+        if( i != j) cout << j<<" ";
+    }
+    cout <<endl;
 
     return ;
 }
@@ -35,3 +39,4 @@ int  main()
     }
     return 0;
 }
+

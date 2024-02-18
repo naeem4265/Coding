@@ -15,7 +15,34 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
-    cout << n <<endl;
+    cin >> s;
+    ll sum = 0;
+    for( i=0; i<n; i++ ) {
+        sum += s[i]-'0';
+    }
+    ll carry = 0;
+    vector<ll> v;
+    for( i=n-1; i>=0; i-- ) {
+        sum -= s[i]-'0';
+        ll x = s[i]-'0';
+        x += carry;
+        x += sum;
+        v.pb( x%10LL );
+        carry = x/10;
+    }
+    while( carry ) {
+        v.pb( carry%10LL );
+        carry /= 10LL;
+    }
+    reverse( v.begin(), v.end() );
+    bool ok = 0;
+    for( ll x: v )  {
+        if( x || ok ) {
+            cout << x ;
+            ok = 1;
+        }   
+    }
+    cout <<endl;
 
     return ;
 }

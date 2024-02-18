@@ -15,7 +15,10 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
-    cout << n <<endl;
+    ll a[n+5];
+    for(i=0; i<n; i++ )   cin >> a[i];
+    sort( a, a+n);
+    cout << a[n-1]-a[0] <<endl;
 
     return ;
 }

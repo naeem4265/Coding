@@ -14,8 +14,13 @@ void Please_AC(ll tt)
 {
     ll i,j,n,m,k,q;
     string s;
-    cin >> n ;
-    cout << n <<endl;
+    cin >> n  >> k ;
+    ll ans = 0;
+    m = min( (n + n-2)*2LL, k+1 );
+    ans = m/2LL;
+    k = max( 0LL, k-m);
+    ans += k;
+    cout << ans <<endl;
 
     return ;
 }

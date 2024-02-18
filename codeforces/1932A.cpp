@@ -15,7 +15,13 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
-    cout << n <<endl;
+    cin >> s;
+    ll ans = 0;
+    for( i=0; i<n; i++ ) {
+        if( i && s[i-1]=='*' && s[i]=='*' )   break;
+        if( s[i]=='@' )  ans++;
+    }
+    cout << ans <<endl;
 
     return ;
 }

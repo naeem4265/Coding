@@ -15,7 +15,15 @@ void Please_AC(ll tt)
     ll i,j,n,m,k,q;
     string s;
     cin >> n ;
-    cout << n <<endl;
+    ll a, sum = 0;
+    for( i=0; i<n; i++ ) {
+        cin >> a;
+        sum++;
+        if( sum % a  )  {
+            sum = ((sum/a)+1)*a ;
+        }  //  cout << i << " " <<sum <<endl;
+    }
+    cout << sum <<endl;
 
     return ;
 }
