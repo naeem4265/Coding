@@ -27,6 +27,15 @@ void cumbackwordhashing(string s,ll base,ll mod,ll A[])
     }
 }
 
+ll SubStringForwardHashValue(string s, ll l, ll r, ll A[]) {
+    ll n = s.size(), len = r - l + 1;
+    if( l == 0 )   return A[r];
+    ll mul = bigmod( base, len, Mod );
+    ll leftValue = ( A[l-1] * mul ) % Mod;
+    ll hashValue = ( A[r] - leftValue + Mod ) % Mod;
+    return hashValue;
+}
+
 
 
 int  main()
