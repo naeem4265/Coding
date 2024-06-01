@@ -7,7 +7,8 @@
 #define pi acos(-1.0)
 const ll limit = 1e6+5;
 const ll Mod = 1e9+7;
-const ll base = 31;
+const ll base1 = 29;
+const ll base2 = 31;
 using namespace std;
 
 ll bigmod(ll b,ll p,ll M)
@@ -27,23 +28,25 @@ ll bigmod(ll b,ll p,ll M)
 void cumforwardhashing(string s,ll base,ll mod,ll A[])
 {
     ll i,n=s.size();
-    A[0] = s[0]-'a'+1;
-    for(i=1; i<n; i++)
+    A[0] = 0;
+    for(i=1; i<=n; i++)
     {
-        A[i] = ((A[i-1]*base)+s[i]-'a'+1)%mod;
+        A[i] = ((A[i-1]*base)+s[i-1]-'a'+1)%mod;
     }
 }
 
 
-ll Count(string s, ll len, ll sum, ll CumHash[]) {
+ll Count(string s, ll len, ll sum1, ll sum2, ll CumHash1[], ll CumHash2[]) {
     ll n = s.size();
-    ll  ct = 1;
-    for(int i=n-1; i>=len; ) {
-        ll mul = bigmod( base, len, Mod );
-        ll temp = ( CumHash[i] - (CumHash[i-len]*mul) % Mod + Mod ) % Mod;
+    ll  ct = 0;
+    for(int i=n; i>=len; ) {
+        ll mul1 = bigmod( base1, len, Mod );
+        ll mul2 = bigmod( base2, len, Mod );
+        ll temp1 = ( CumHash1[i] - (CumHash1[i-len]*mul1) % Mod + Mod ) % Mod;
+        ll temp2 = ( CumHash2[i] - (CumHash2[i-len]*mul2) % Mod + Mod ) % Mod;
 
         //cout <<i<<" "<<CumHash[i]<<" "<<CumHash[i-len]<<" "<<mul<<" "<<temp<<" "<<sum<<" "<<len<<" "<<ct<<endl;
-        if( temp == sum ) {
+        if( temp1 == sum1 && temp2 == sum2 ) {
             i -= len;
             ct++;
         }
@@ -54,13 +57,14 @@ ll Count(string s, ll len, ll sum, ll CumHash[]) {
 }
 
 
-ll bs(string s, ll l, ll CumHash[]) {
+ll bs(string s, ll l, ll CumHash1[], ll CumHash2[]) {
     ll n = s.size();
     ll lo = 1, hi = n, mi, ans = 0;
     while( lo <= hi ) {
         mi = (lo + hi)/2;
-        ll sum = CumHash[mi-1];
-        ll cnt = Count(s, mi, sum, CumHash);
+        ll sum1 = CumHash1[mi];
+        ll sum2 = CumHash2[mi];
+        ll cnt = Count(s, mi, sum1, sum2, CumHash1, CumHash2);
         if( cnt >= l ) {
             ans = mi;
             lo = mi+1;
@@ -77,9 +81,10 @@ void Please_AC(ll tt)
     string s;
     cin >> n >> l >> r;
     cin >> s;
-    ll CumHash[n+5];
-    cumforwardhashing(s, 31LL, Mod, CumHash);
-    cout << bs(s, l, CumHash) <<endl;
+    ll CumHash1[n+5], CumHash2[n+5];
+    cumforwardhashing(s, base1, Mod, CumHash1);
+    cumforwardhashing(s, base2, Mod, CumHash2);
+    cout << bs(s, l, CumHash1, CumHash2) <<endl;
     return ;
 }
 
